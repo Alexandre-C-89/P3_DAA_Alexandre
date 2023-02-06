@@ -2,37 +2,47 @@ package com.openclassrooms.entrevoisins.model;
 
 import java.util.Objects;
 
-/**
- * Model object representing a Neighbour
- */
-public class Neighbour {
+public class FavoritesNeighbour {
 
-    /** Identifier */
+    /**
+     * Identifier
+     */
     private long id;
 
-    /** Full name */
+    /**
+     * Full name
+     */
     private String name;
 
-    /** Avatar */
+    /**
+     * Avatar
+     */
     private String avatarUrl;
 
-    /** Adress */
+    /**
+     * Adress
+     */
     private String address;
 
-    /** Phone number */
+    /**
+     * Phone number
+     */
     private String phoneNumber;
 
-    /** About me */
+    /**
+     * About me
+     */
     private String aboutMe;
 
     /**
      * Constructor
+     *
      * @param id
      * @param name
      * @param avatarUrl
      */
-    public Neighbour(long id, String name, String avatarUrl, String address,
-                     String phoneNumber, String aboutMe) {
+    public FavoritesNeighbour(long id, String name, String avatarUrl, String address,
+                              String phoneNumber, String aboutMe) {
         this.id = id;
         this.name = name;
         this.avatarUrl = avatarUrl;
@@ -93,8 +103,8 @@ public class Neighbour {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Neighbour neighbour = (Neighbour) o;
-        return Objects.equals(id, neighbour.id);
+        FavoritesNeighbour favoritesNeighbour = (FavoritesNeighbour) o;
+        return Objects.equals(id, favoritesNeighbour.id);
     }
 
     @Override
@@ -102,4 +112,3 @@ public class Neighbour {
         return Objects.hash(id);
     }
 }
-
