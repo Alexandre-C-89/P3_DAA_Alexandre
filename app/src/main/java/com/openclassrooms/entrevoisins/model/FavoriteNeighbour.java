@@ -2,7 +2,7 @@ package com.openclassrooms.entrevoisins.model;
 
 import java.util.Objects;
 
-public class FavoritesNeighbour {
+public class FavoriteNeighbour {
 
     /**
      * Identifier
@@ -41,8 +41,8 @@ public class FavoritesNeighbour {
      * @param name
      * @param avatarUrl
      */
-    public FavoritesNeighbour(long id, String name, String avatarUrl, String address,
-                              String phoneNumber, String aboutMe) {
+    public FavoriteNeighbour(long id, String name, String avatarUrl, String address,
+                             String phoneNumber, String aboutMe) {
         this.id = id;
         this.name = name;
         this.avatarUrl = avatarUrl;
@@ -103,8 +103,8 @@ public class FavoritesNeighbour {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        FavoritesNeighbour favoritesNeighbour = (FavoritesNeighbour) o;
-        return Objects.equals(id, favoritesNeighbour.id);
+        FavoriteNeighbour favoriteNeighbour = (FavoriteNeighbour) o;
+        return Objects.equals(id, favoriteNeighbour.id);
     }
 
     @Override
