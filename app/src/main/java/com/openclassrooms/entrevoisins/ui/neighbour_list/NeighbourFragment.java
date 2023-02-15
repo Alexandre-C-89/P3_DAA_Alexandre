@@ -63,6 +63,13 @@ public class NeighbourFragment extends Fragment {
         mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
     }
 
+    /**
+     * Init the list of Favorite Neighbours
+     *
+     */
+    // private void initListFavoriteNeighboour
+
+
     @Override
     public void onResume() {
         super.onResume();
