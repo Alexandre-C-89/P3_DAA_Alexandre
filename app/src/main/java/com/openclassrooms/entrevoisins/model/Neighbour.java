@@ -25,6 +25,9 @@ public class Neighbour {
     /** About me */
     private String aboutMe;
 
+    /** isFavorite */
+    private boolean isFavorite;
+
     /**
      * Constructor
      * @param id

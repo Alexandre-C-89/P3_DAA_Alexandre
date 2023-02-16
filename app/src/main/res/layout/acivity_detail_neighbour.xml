@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ImageView
+        android:id="@+id/image_detail_neighbour"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/colorAccent"
+        />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="-32dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/corner_radius"
+        android:src="@drawable/ic_star_border_white_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_detail_neighbour"/>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintlayout_detail_neighbour"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_margin="16dp"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_detail_neighbour"
+        android:elevation="16dp"
+        >
+
+        <TextView
+            android:id="@+id/name_detail_neighbour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Caroline"
+            android:textSize="32sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/constraintlayout_detail_neighbour" />
+
+        <ImageView
+            android:id="@+id/locationImg_detail_neighbour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_location_24"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="@+id/name_detail_neighbour"
+            app:layout_constraintTop_toBottomOf="@+id/name_detail_neighbour" />
+
+        <TextView
+            android:id="@+id/address_detail_neighbour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:hint="Address"
+            app:layout_constraintBottom_toBottomOf="@+id/locationImg_detail_neighbour"
+            app:layout_constraintStart_toEndOf="@+id/locationImg_detail_neighbour"
+            app:layout_constraintTop_toTopOf="@+id/locationImg_detail_neighbour" />
+
+        <ImageView
+            android:id="@+id/phoneImg_detail_neighbour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_phone_24"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="@+id/locationImg_detail_neighbour"
+            app:layout_constraintTop_toBottomOf="@+id/locationImg_detail_neighbour" />
+
+        <TextView
+            android:id="@+id/phone_detail_neighbour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="+33 6 45 16 34 97"
+            app:layout_constraintBottom_toBottomOf="@+id/phoneImg_detail_neighbour"
+            app:layout_constraintStart_toStartOf="@+id/address_detail_neighbour"
+            app:layout_constraintTop_toTopOf="@+id/phoneImg_detail_neighbour" />
+
+        <ImageView
+            android:id="@+id/internet_detail_neighbour"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/connexion_internet"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="@+id/phoneImg_detail_neighbour"
+            app:layout_constraintTop_toBottomOf="@+id/phoneImg_detail_neighbour" />
+
+        <TextView
+            android:id="@+id/facebook_detail_neighbour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="www.facebook.fr/caroline"
+            app:layout_constraintBottom_toBottomOf="@+id/internet_detail_neighbour"
+            app:layout_constraintStart_toStartOf="@+id/phone_detail_neighbour"
+            app:layout_constraintTop_toTopOf="@+id/internet_detail_neighbour" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintlayout2_detail_neighbour"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:layout_margin="16dp"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintlayout_detail_neighbour">
+
+        <TextView
+            android:id="@+id/aproposdemoi_detail_neighbour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="A propos de moi"
+            android:textSize="32sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/texte_detail_neighbour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Bonjour..."
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="@+id/aproposdemoi_detail_neighbour"
+            app:layout_constraintTop_toBottomOf="@+id/aproposdemoi_detail_neighbour" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
