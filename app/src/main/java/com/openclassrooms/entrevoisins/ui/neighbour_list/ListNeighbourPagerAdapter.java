@@ -16,7 +16,15 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
      */
     @Override
     public Fragment getItem(int position) {
-        return NeighbourFragment.newInstance();
+        // switch pour afficher soit un fragment ou l'autre
+        if (position == 0) {
+            // case 1 NeighbourFragment
+            return NeighbourFragment.newInstance();
+        } else {
+            //case 2 FavoriteFragment
+            return FavoriteNeighbourFragment.newInstance();
+        }
+
     }
 
     /**
@@ -24,6 +32,6 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
      */
     @Override
     public int getCount() {
-        return 1;
+        return 2;
     }
 }

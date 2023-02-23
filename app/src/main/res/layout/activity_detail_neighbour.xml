@@ -121,7 +121,7 @@
             android:id="@+id/aproposdemoi_detail_neighbour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:Text="A propos de moi"
+            android:text="A propos de moi"
             android:textSize="32sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -130,7 +130,7 @@
             android:id="@+id/texte_detail_neighbour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Bonjour..."
+            android:hint="Bonjour"
             android:layout_marginTop="24dp"
             app:layout_constraintStart_toStartOf="@+id/aproposdemoi_detail_neighbour"
             app:layout_constraintTop_toBottomOf="@+id/aproposdemoi_detail_neighbour" />

@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -19,6 +21,7 @@ import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,6 +30,8 @@ public class NeighbourFragment extends Fragment {
     private NeighbourApiService mApiService;
     private List<Neighbour> mNeighbours;
     private RecyclerView mRecyclerView;
+
+    private Neighbour neighbour;
 
 
     /**
@@ -44,6 +49,10 @@ public class NeighbourFragment extends Fragment {
         mApiService = DI.getNeighbourApiService();
     }
 
+    /**
+     * Ici la la vue est inflate
+     * pour pouvoir affiché les données
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,6 +62,7 @@ public class NeighbourFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         return view;
+
     }
 
     /**
@@ -67,7 +77,18 @@ public class NeighbourFragment extends Fragment {
      * Init the list of Favorite Neighbours
      *
      */
-    // private void initListFavoriteNeighboour
+    private void initFavoriteList() {
+        List<Neighbour> favouriteNeighbours = new ArrayList<>();
+
+        for (Neighbour neighbour : mApiService.getNeighbours()) {
+            if (neighbour.isFavorite()) {
+                favouriteNeighbours.add(neighbour);
+            }
+        }
+
+        mNeighbours = favouriteNeighbours;
+        mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
+    }
 
 
     @Override
@@ -97,4 +118,6 @@ public class NeighbourFragment extends Fragment {
         mApiService.deleteNeighbour(event.neighbour);
         initList();
     }
+
+
 }

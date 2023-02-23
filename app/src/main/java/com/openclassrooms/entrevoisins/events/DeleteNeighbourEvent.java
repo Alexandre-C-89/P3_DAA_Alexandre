@@ -19,4 +19,13 @@ public class DeleteNeighbourEvent {
     public DeleteNeighbourEvent(Neighbour neighbour) {
         this.neighbour = neighbour;
     }
+
+    /**
+     * Constructor.
+     * @param neighbour
+     */
+    /**public FavoriteNeighbourEvent(Neighbour neighbour) {
+        this.neighbour.setFavorite(false);
+    }*/
+
 }
