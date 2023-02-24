@@ -40,17 +40,11 @@ public class DetailNeighbourActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_neighbour);
+        setContentView(R.layout.activity_detail_neighbour);
         ButterKnife.bind(this);
 
         setSupportActionBar(mToolbar);
         mPagerAdapter = new ListNeighbourPagerAdapter(getSupportFragmentManager());
-        //mViewPager.setAdapter(mPagerAdapter);
-        //mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
-        //mTabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
-
-        // Au click j'attéris sur la page de détails
-
 
     }
 

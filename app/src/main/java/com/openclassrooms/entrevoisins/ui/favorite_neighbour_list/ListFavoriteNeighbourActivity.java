@@ -1,18 +1,21 @@
-package com.openclassrooms.entrevoisins.ui.neighbour_list;
+package com.openclassrooms.entrevoisins.ui.favorite_neighbour_list;
 
-import android.os.Bundle;
-import com.google.android.material.tabs.TabLayout;
-import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
 
+import android.os.Bundle;
+
+import com.google.android.material.tabs.TabLayout;
 import com.openclassrooms.entrevoisins.R;
+import com.openclassrooms.entrevoisins.ui.neighbour_list.AddNeighbourActivity;
+import com.openclassrooms.entrevoisins.ui.neighbour_list.ListNeighbourPagerAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ListNeighbourActivity extends AppCompatActivity {
+public class ListFavoriteNeighbourActivity extends AppCompatActivity {
 
     // UI Components
     @BindView(R.id.tabs)
@@ -35,9 +38,6 @@ public class ListNeighbourActivity extends AppCompatActivity {
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
         mTabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
-
-        // Au click je suis redirigé vers la page d'un neighbour
-
 
     }
 
