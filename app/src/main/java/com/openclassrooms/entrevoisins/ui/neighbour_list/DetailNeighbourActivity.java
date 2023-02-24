@@ -9,6 +9,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.openclassrooms.entrevoisins.R;
+import com.openclassrooms.entrevoisins.model.Neighbour;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,12 +47,17 @@ public class DetailNeighbourActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         mPagerAdapter = new ListNeighbourPagerAdapter(getSupportFragmentManager());
 
+        // Récupérez les données du voisin sélectionné à partir de l'extra
+        Neighbour selectedNeighbour = getIntent().getParcelableExtra("selected_neighbour");
+
+        // Affichez les données dans votre mise en page
+
     }
 
 
-    @OnClick(R.id.add_favorite)
+    /**@OnClick(R.id.add_favorite)
     void addFavourite() {
         AddNeighbourActivity.navigate(this);
-    }
+    }*/
 
 }

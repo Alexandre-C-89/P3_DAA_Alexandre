@@ -36,9 +36,6 @@ public class ListNeighbourActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
         mTabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-        // Au click je suis redirigé vers la page d'un neighbour
-
-
     }
 
     @OnClick(R.id.add_neighbour)

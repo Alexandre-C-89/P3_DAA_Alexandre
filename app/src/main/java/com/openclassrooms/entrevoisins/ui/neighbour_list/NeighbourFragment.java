@@ -1,14 +1,14 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -21,15 +21,19 @@ import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-import java.util.ArrayList;
 import java.util.List;
 
-
-public class NeighbourFragment extends Fragment {
+/**
+ * J'appelle la méthode SetOnItemClickListener
+ * dans mon fragment car il contient le RecyclerView.
+ */
+public class NeighbourFragment extends Fragment implements MyNeighbourRecyclerViewAdapter.OnItemClickListener {
 
     private NeighbourApiService mApiService;
     private List<Neighbour> mNeighbours;
     private RecyclerView mRecyclerView;
+
+    private MyNeighbourRecyclerViewAdapter mAdapter;
 
 
     /**
@@ -48,7 +52,7 @@ public class NeighbourFragment extends Fragment {
     }
 
     /**
-     * Ici la la vue est inflate
+     * Ici la vue est inflate
      * pour pouvoir affiché les données
      */
     @Override
@@ -56,9 +60,19 @@ public class NeighbourFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_neighbour_list, container, false);
         Context context = view.getContext();
+
+        /**
+         * Ici je récupère le RecyclerView
+         * pour pouvoir ensuite lui transmettre les données
+         * que je veux afficher
+         */
         mRecyclerView = (RecyclerView) view;
+        mRecyclerView = view.findViewById(R.id.list_neighbours);
+        mAdapter = new MyNeighbourRecyclerViewAdapter(mNeighbours, this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        mRecyclerView.setAdapter(mAdapter);
+
         return view;
 
     }
@@ -68,7 +82,11 @@ public class NeighbourFragment extends Fragment {
      */
     private void initList() {
         mNeighbours = mApiService.getNeighbours();
-        mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
+        mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours, this));
+        // J'informe l'adapter qu'il y a eu des changements
+        // pour qu'il puisse affiché la nouvelle
+        // liste qui contient ces même changements
+        mAdapter.notifyDataSetChanged();
     }
 
 
@@ -100,5 +118,17 @@ public class NeighbourFragment extends Fragment {
         initList();
     }
 
-
+    /**
+     * Lorsqu'un utilisateur clique sur un neighbour dans la liste
+     * j'appelle la méthode OnItemClick.
+     * Dans cette méthode j'envoi les infos du neighbour
+     * pour pouvoir les récupérés dans ma class DetailNeighbourActivity
+     *
+     */
+    @Override
+    public void onItemClick(Neighbour neighbour) {
+        Intent intent = new Intent(getActivity(), DetailNeighbourActivity.class);
+        intent.putExtra("selected_neighbour", neighbour);
+        startActivity(intent);
+    }
 }
