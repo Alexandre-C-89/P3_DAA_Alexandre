@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.events.DeleteNeighbourEvent;
+import com.openclassrooms.entrevoisins.events.onClickNeighbourEvent;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 
 import org.greenrobot.eventbus.EventBus;
@@ -59,10 +60,10 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
         });
 
         // Ajout du Listener de clic
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.mListNeighbour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.onItemClick(neighbour);
+                EventBus.getDefault().post(new onClickNeighbourEvent(neighbour));
             }
         });
 
@@ -80,6 +81,9 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
         public TextView mNeighbourName;
         @BindView(R.id.item_list_delete_button)
         public ImageButton mDeleteButton;
+
+        @BindView(R.id.list_neighbours)
+        public RecyclerView mListNeighbour;
 
         public ViewHolder(View view) {
             super(view);
