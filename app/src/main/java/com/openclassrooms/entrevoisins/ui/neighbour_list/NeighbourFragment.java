@@ -29,12 +29,10 @@ import java.util.List;
  */
 public class NeighbourFragment extends Fragment implements MyNeighbourRecyclerViewAdapter.OnItemClickListener {
 
-    private NeighbourApiService mApiService;
     private List<Neighbour> mNeighbours;
+    private NeighbourApiService mApiService;
     private RecyclerView mRecyclerView;
-
     private MyNeighbourRecyclerViewAdapter mAdapter;
-
 
     /**
      * Create and return a new instance

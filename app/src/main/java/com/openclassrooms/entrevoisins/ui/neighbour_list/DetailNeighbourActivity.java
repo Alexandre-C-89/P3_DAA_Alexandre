@@ -14,6 +14,7 @@ import com.openclassrooms.entrevoisins.model.Neighbour;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 public class DetailNeighbourActivity extends AppCompatActivity {
@@ -33,8 +34,8 @@ public class DetailNeighbourActivity extends AppCompatActivity {
     @BindView(R.id.texte_detail_neighbour)
     TextView mTextDetailNeighbour;
 
-    /**@BindView(R.id.add_favorite)
-    Button mAddFavorite;*/
+    @BindView(R.id.add_favorite)
+    Button mAddFavorite;
 
     // ListNeighbourPagerAdapter mPagerAdapter;
 
@@ -61,10 +62,20 @@ public class DetailNeighbourActivity extends AppCompatActivity {
                 .into(mImageDetailNeighbour);
     }
 
+    // Au clique je ajouter un neighbour au favoris
+    // 1 - Créer la fonction
+    @OnClick(R.id.add_favorite)
+            // 2- dans la fonction injecté la logique pour que au clique cela ajoute le neighbour au favoris
+            void addFavorite(Neighbour neighbour) {
 
-    /**@OnClick(R.id.add_favorite)
-    void addFavourite() {
-        AddNeighbourActivity.navigate(this);
-    }*/
+            // 3- changer l'icône pour indiquer qu'il est favoris
+            if(neighbour.isFavorite())  {
+                // alors je passe a false -> étoile non rempli
+            } else {
+                // alors je passe a true -> étoile rempli
+            }
+
+        }
+
 
 }
