@@ -1,28 +1,25 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.material.tabs.TabLayout;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 
 public class DetailNeighbourActivity extends AppCompatActivity {
 
-    // UI Components
-    @BindView(R.id.tabs)
-    TabLayout mTabLayout;
-    @BindView(R.id.toolbar)
-    Toolbar mToolbar;
+    @BindView(R.id.image_detail_neighbour)
+    ImageView mImageDetailNeighbour;
 
     @BindView(R.id.name_detail_neighbour)
     TextView mNameDetailNeighbour;
@@ -36,7 +33,10 @@ public class DetailNeighbourActivity extends AppCompatActivity {
     @BindView(R.id.texte_detail_neighbour)
     TextView mTextDetailNeighbour;
 
-    ListNeighbourPagerAdapter mPagerAdapter;
+    /**@BindView(R.id.add_favorite)
+    Button mAddFavorite;*/
+
+    // ListNeighbourPagerAdapter mPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +44,21 @@ public class DetailNeighbourActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_neighbour);
         ButterKnife.bind(this);
 
-        setSupportActionBar(mToolbar);
-        mPagerAdapter = new ListNeighbourPagerAdapter(getSupportFragmentManager());
+        // setSupportActionBar(mToolbar);
+        // mPagerAdapter = new ListNeighbourPagerAdapter(getSupportFragmentManager());
 
         // Récupérez les données du voisin sélectionné à partir de l'extra
-        Neighbour selectedNeighbour = getIntent().getParcelableExtra("selected_neighbour");
+        Neighbour neighbour = (Neighbour) getIntent().getParcelableExtra("neighbour");
 
         // Affichez les données dans votre mise en page
-
+        mNameDetailNeighbour.setText(neighbour.getName());
+        mAddressDetailNeighbour.setText(neighbour.getAddress());
+        mPhoneDetailNeighbour.setText(neighbour.getPhoneNumber());
+        mTextDetailNeighbour.setText(neighbour.getAboutMe());
+        Glide.with(this)
+                .load(neighbour.getAvatarUrl())
+                .centerCrop()
+                .into(mImageDetailNeighbour);
     }
 
 

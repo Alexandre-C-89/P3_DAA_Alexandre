@@ -45,7 +45,7 @@
             android:id="@+id/name_detail_neighbour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Caroline"
+            tools:text="Nom du voisin"
             android:textSize="32sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/constraintlayout_detail_neighbour" />

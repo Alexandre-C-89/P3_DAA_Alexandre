@@ -10,29 +10,44 @@ import java.util.Objects;
  */
 public class Neighbour implements Parcelable {
 
-    /** Identifier */
+    /**
+     * Identifier
+     */
     private long id;
 
-    /** Full name */
+    /**
+     * Full name
+     */
     private String name;
 
-    /** Avatar */
+    /**
+     * Avatar
+     */
     private String avatarUrl;
 
-    /** Adress */
+    /**
+     * Adress
+     */
     private String address;
 
-    /** Phone number */
+    /**
+     * Phone number
+     */
     private String phoneNumber;
 
-    /** About me */
+    /**
+     * About me
+     */
     private String aboutMe;
 
-    /** isFavorite */
+    /**
+     * isFavorite
+     */
     private boolean isFavorite = false;
 
     /**
      * Constructor
+     *
      * @param id
      * @param name
      * @param avatarUrl
@@ -47,6 +62,7 @@ public class Neighbour implements Parcelable {
         this.aboutMe = aboutMe;
     }
 
+    @Override
     public int describeContents() {
         return 0;
     }
