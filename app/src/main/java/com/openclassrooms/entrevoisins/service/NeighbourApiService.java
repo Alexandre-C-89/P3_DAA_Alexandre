@@ -34,4 +34,15 @@ public interface NeighbourApiService {
      */
     List<Neighbour> getFavoriteNeighbours();
 
+    /**
+     * add my Favorite Neighbours
+     * @return {@link List}
+     */
+    List<Neighbour> addFavoriteNeighbour(Neighbour neighbour);
+
+    /**
+     * delete my Favorite Neighbours
+     * @return {@link List}
+     */
+    List<Neighbour> deleteFavoriteNeighbour(Neighbour neighbour);
 }

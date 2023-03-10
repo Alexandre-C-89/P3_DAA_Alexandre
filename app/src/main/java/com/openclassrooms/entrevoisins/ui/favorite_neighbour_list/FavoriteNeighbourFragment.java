@@ -62,7 +62,6 @@ public class FavoriteNeighbourFragment extends Fragment {
 
     /**
      * Init the list of Favorite Neighbours
-     *
      */
     private void initFavoriteList() {
         List<Neighbour> favouriteNeighbours = new ArrayList<>();

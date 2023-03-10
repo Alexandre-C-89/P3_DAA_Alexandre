@@ -1,16 +1,19 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
 import android.os.Bundle;
-import android.widget.Button;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.openclassrooms.entrevoisins.R;
+import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
+import com.openclassrooms.entrevoisins.service.DummyNeighbourApiService;
+import com.openclassrooms.entrevoisins.service.DummyNeighbourGenerator;
+import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,6 +22,9 @@ import butterknife.OnClick;
 
 public class DetailNeighbourActivity extends AppCompatActivity {
 
+    private Neighbour neighbour;
+
+    private NeighbourApiService mApiService;
     @BindView(R.id.image_detail_neighbour)
     ImageView mImageDetailNeighbour;
 
@@ -35,9 +41,7 @@ public class DetailNeighbourActivity extends AppCompatActivity {
     TextView mTextDetailNeighbour;
 
     @BindView(R.id.add_favorite)
-    Button mAddFavorite;
-
-    // ListNeighbourPagerAdapter mPagerAdapter;
+    ImageButton mAddFavorite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +49,8 @@ public class DetailNeighbourActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_neighbour);
         ButterKnife.bind(this);
 
-        // setSupportActionBar(mToolbar);
-        // mPagerAdapter = new ListNeighbourPagerAdapter(getSupportFragmentManager());
-
         // Récupérez les données du voisin sélectionné à partir de l'extra
-        Neighbour neighbour = (Neighbour) getIntent().getParcelableExtra("neighbour");
+        neighbour = (Neighbour) getIntent().getParcelableExtra("neighbour");
 
         // Affichez les données dans votre mise en page
         mNameDetailNeighbour.setText(neighbour.getName());
@@ -60,22 +61,37 @@ public class DetailNeighbourActivity extends AppCompatActivity {
                 .load(neighbour.getAvatarUrl())
                 .centerCrop()
                 .into(mImageDetailNeighbour);
+
+        mApiService = DI.getNeighbourApiService();
     }
 
     // Au clique je ajouter un neighbour au favoris
     // 1 - Créer la fonction
     @OnClick(R.id.add_favorite)
             // 2- dans la fonction injecté la logique pour que au clique cela ajoute le neighbour au favoris
-            void addFavorite(Neighbour neighbour) {
+            void addFavorite() {
+            Log.e("tag", "Je suis dans la fonction !");
+            Boolean neighbourIsFavorite = neighbour.isFavorite();
+            Log.e("tag", neighbourIsFavorite.toString());
 
-            // 3- changer l'icône pour indiquer qu'il est favoris
-            if(neighbour.isFavorite())  {
+            // 3- changer l'icône pour indiquer qu'il est favoris (backgroundTint)
+            if(!neighbour.isFavorite())  {
                 // alors je passe a false -> étoile non rempli
+                mAddFavorite.setImageResource(R.drawable.ic_star_24);
+                // Changer l'attribut isFavorite
+                neighbour.setFavorite(!neighbour.isFavorite());
+                Log.e("tag", "isTrue");
+                // add neighbour to ListFavoriteNeighbour
+                mApiService.addFavoriteNeighbour(neighbour);
             } else {
                 // alors je passe a true -> étoile rempli
+                mAddFavorite.setImageResource(R.drawable.ic_star_border_white_24dp);
+                // changer l'attribut isFavorite
+                neighbour.setFavorite(false);
+                Log.d("tag", "isFalse");
+                mApiService.deleteFavoriteNeighbour(neighbour);
             }
 
         }
-
 
 }
