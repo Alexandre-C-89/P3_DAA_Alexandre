@@ -52,6 +52,7 @@ public class FavoriteNeighbourFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_favorite_neighbour, container, false);
         Context context = view.getContext();
+
         mRecyclerView = (RecyclerView) view;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
@@ -62,18 +63,11 @@ public class FavoriteNeighbourFragment extends Fragment {
 
     /**
      * Init the list of Favorite Neighbours
+     *
      */
     private void initFavoriteList() {
-        List<Neighbour> favouriteNeighbours = new ArrayList<>();
-
-        for (Neighbour neighbour : mApiService.getNeighbours()) {
-            if (neighbour.isFavorite()) {
-                favouriteNeighbours.add(neighbour);
-            }
-        }
-
-        mNeighbours = favouriteNeighbours;
-        mRecyclerView.setAdapter(new MyFavoriteNeighbourRecyclerViewAdapter(mNeighbours));
+        mNeighbours = mApiService.getFavoriteNeighbours();
+        mRecyclerView.setAdapter(new MyFavoriteNeighbourRecyclerViewAdapter(mNeighbours, this));
     }
 
     @Override

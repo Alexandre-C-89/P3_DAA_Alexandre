@@ -151,7 +151,7 @@ public class Neighbour implements Parcelable {
     }
 
     public void setFavorite(boolean favorite) {
-        isFavorite = favorite;
+        this.isFavorite = favorite;
     }
 
     @Override

@@ -34,12 +34,15 @@ public class NeighbourFragment extends Fragment implements MyNeighbourRecyclerVi
     private RecyclerView mRecyclerView;
     private MyNeighbourRecyclerViewAdapter mAdapter;
 
+    private Boolean isFavorite;
+
     /**
      * Create and return a new instance
      * @return @{@link NeighbourFragment}
      */
-    public static NeighbourFragment newInstance() {
+    public static NeighbourFragment newInstance(Boolean isFavorite) {
         NeighbourFragment fragment = new NeighbourFragment();
+        fragment.isFavorite = isFavorite;
         return fragment;
     }
 
@@ -79,12 +82,12 @@ public class NeighbourFragment extends Fragment implements MyNeighbourRecyclerVi
      * Init the List of neighbours
      */
     private void initList() {
-        mNeighbours = mApiService.getNeighbours();
+        if (isFavorite) {
+            mNeighbours = mApiService.getFavoriteNeighbours();
+        } else {
+            mNeighbours = mApiService.getNeighbours();
+        }
         mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours, this));
-        // J'informe l'adapter qu'il y a eu des changements
-        // pour qu'il puisse affiché la nouvelle
-        // liste qui contient ces même changements
-        mAdapter.notifyDataSetChanged();
     }
 
 

@@ -1,9 +1,9 @@
 package com.openclassrooms.entrevoisins.service;
 
+import androidx.annotation.Nullable;
+
 import com.openclassrooms.entrevoisins.model.Neighbour;
-
 import java.util.List;
-
 
 /**
  * Neighbour API client
@@ -35,14 +35,8 @@ public interface NeighbourApiService {
     List<Neighbour> getFavoriteNeighbours();
 
     /**
-     * add my Favorite Neighbours
-     * @return {@link List}
+     *
      */
-    List<Neighbour> addFavoriteNeighbour(Neighbour neighbour);
+    Neighbour getFromId(long id);
 
-    /**
-     * delete my Favorite Neighbours
-     * @return {@link List}
-     */
-    List<Neighbour> deleteFavoriteNeighbour(Neighbour neighbour);
 }

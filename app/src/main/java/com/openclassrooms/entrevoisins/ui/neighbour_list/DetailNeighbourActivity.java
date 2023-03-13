@@ -23,8 +23,6 @@ import butterknife.OnClick;
 public class DetailNeighbourActivity extends AppCompatActivity {
 
     private Neighbour neighbour;
-
-    private NeighbourApiService mApiService;
     @BindView(R.id.image_detail_neighbour)
     ImageView mImageDetailNeighbour;
 
@@ -50,7 +48,9 @@ public class DetailNeighbourActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         // Récupérez les données du voisin sélectionné à partir de l'extra
-        neighbour = (Neighbour) getIntent().getParcelableExtra("neighbour");
+        Long neighbourId = getIntent().getLongExtra("neighbour", 0);
+        NeighbourApiService mApiService = DI.getNeighbourApiService();
+        neighbour = mApiService.getFromId(neighbourId);
 
         // Affichez les données dans votre mise en page
         mNameDetailNeighbour.setText(neighbour.getName());
@@ -61,8 +61,6 @@ public class DetailNeighbourActivity extends AppCompatActivity {
                 .load(neighbour.getAvatarUrl())
                 .centerCrop()
                 .into(mImageDetailNeighbour);
-
-        mApiService = DI.getNeighbourApiService();
     }
 
     // Au clique je ajouter un neighbour au favoris
@@ -78,19 +76,15 @@ public class DetailNeighbourActivity extends AppCompatActivity {
             if(!neighbour.isFavorite())  {
                 // alors je passe a false -> étoile non rempli
                 mAddFavorite.setImageResource(R.drawable.ic_star_24);
-                // Changer l'attribut isFavorite
-                neighbour.setFavorite(!neighbour.isFavorite());
                 Log.e("tag", "isTrue");
-                // add neighbour to ListFavoriteNeighbour
-                mApiService.addFavoriteNeighbour(neighbour);
             } else {
                 // alors je passe a true -> étoile rempli
                 mAddFavorite.setImageResource(R.drawable.ic_star_border_white_24dp);
-                // changer l'attribut isFavorite
-                neighbour.setFavorite(false);
                 Log.d("tag", "isFalse");
-                mApiService.deleteFavoriteNeighbour(neighbour);
             }
+
+            // Changer l'attribut isFavorite
+            neighbour.setFavorite(!neighbour.isFavorite());
 
         }
 

@@ -23,7 +23,7 @@ public class MyFavoriteNeighbourRecyclerViewAdapter extends RecyclerView.Adapter
 
     private final List<Neighbour> mNeighbours;
 
-    public MyFavoriteNeighbourRecyclerViewAdapter(List<Neighbour> items) {
+    public MyFavoriteNeighbourRecyclerViewAdapter(List<Neighbour> items, FavoriteNeighbourFragment favoriteNeighbourFragment) {
         mNeighbours = items;
     }
 
