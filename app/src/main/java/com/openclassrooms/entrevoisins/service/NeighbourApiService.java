@@ -1,7 +1,5 @@
 package com.openclassrooms.entrevoisins.service;
 
-import androidx.annotation.Nullable;
-
 import com.openclassrooms.entrevoisins.model.Neighbour;
 import java.util.List;
 
