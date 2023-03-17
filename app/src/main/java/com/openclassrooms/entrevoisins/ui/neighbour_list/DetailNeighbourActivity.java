@@ -42,6 +42,15 @@ public class DetailNeighbourActivity extends AppCompatActivity {
     ImageButton mAddFavorite;
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        if(!neighbour.isFavorite())  {
+            mAddFavorite.setImageResource(R.drawable.ic_star_border_white_24dp);
+        }else {
+            mAddFavorite.setImageResource(R.drawable.ic_star_24);
+        }
+    }
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_neighbour);
