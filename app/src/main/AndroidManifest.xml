@@ -19,7 +19,13 @@
             android:exported="false" />
         <activity
             android:name=".ui.neighbour_list.DetailNeighbourActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.neighbour_list.ListNeighbourActivity"
+                />
+        </activity>
         <activity
             android:name=".ui.neighbour_list.AddNeighbourActivity"
             android:label="@string/activity_new_neighbour" />
