@@ -61,4 +61,11 @@ public class NeighbourServiceTest {
         assertTrue(service.getFavoriteNeighbours().contains(newFavoriteNeighbour));
     }
 
+    @Test
+    public void getNeighbourWithIdSuccess() {
+        Neighbour newNeigbhour = new Neighbour(12,"Joe","avatarUrl","Jump Street", "+33 64764865737","Salut c'est joe");
+        service.createNeighbour(newNeigbhour);
+        assertTrue(service.getFromId(12));
+    }
+
 }
