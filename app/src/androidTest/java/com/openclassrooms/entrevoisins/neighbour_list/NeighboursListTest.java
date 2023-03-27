@@ -4,6 +4,7 @@ package com.openclassrooms.entrevoisins.neighbour_list;
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.espresso.contrib.RecyclerViewActions;
+import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import com.openclassrooms.entrevoisins.R;
@@ -11,6 +12,7 @@ import com.openclassrooms.entrevoisins.model.Neighbour;
 import com.openclassrooms.entrevoisins.service.DummyNeighbourGenerator;
 import com.openclassrooms.entrevoisins.ui.neighbour_list.DetailNeighbourActivity;
 import com.openclassrooms.entrevoisins.ui.neighbour_list.ListNeighbourActivity;
+import com.openclassrooms.entrevoisins.ui.neighbour_list.NeighbourFragment;
 import com.openclassrooms.entrevoisins.utils.DeleteViewAction;
 import org.junit.Before;
 import org.junit.Rule;
@@ -48,6 +50,8 @@ public class NeighboursListTest {
 
     // This is fixed
     private static int ITEMS_COUNT = 12;
+
+    private static int FAVORIS_ITEMS_COUNT = 1;
 
     private ListNeighbourActivity mActivity;
 
@@ -148,24 +152,12 @@ public class NeighboursListTest {
 
     @Test
     public void favoritesTab_ShouldOnlyDisplayFavoriteNeighbours() {
-        // Given: at least one neighbor marked as favorite
-        Neighbour favouriteNeighbour = DummyNeighbourGenerator.DUMMY_NEIGHBOURS.get(0);
-        favouriteNeighbour.setFavorite(true);
-        Neighbour nonFavouriteNeighbour = DummyNeighbourGenerator.DUMMY_NEIGHBOURS.get(1);
-        nonFavouriteNeighbour.setFavorite(false);
-
-        // When: launching the activity and selecting the Favorites tab
-        Intent intent = new Intent(ApplicationProvider.getApplicationContext(), DetailNeighbourActivity.class);
-        intent.putExtra(DetailNeighbourActivity.EXTRA_NEIGHBOUR, favouriteNeighbour);
-        ActivityScenario<DetailNeighbourActivity> scenario = ActivityScenario.launch(intent);
-        onView(withId(R.id.add_favorite)).perform(click());
-        onView(withContentDescription("Navigate up")).perform(click());
-        onView(withText("FAVORITES")).perform(click());
-
-        // Then: only the favorite neighbor is displayed
-        onView(withId(R.id.list_neighbours)).check(matches(hasDescendant(withText(favouriteNeighbour.getName()))));
-        onView(withId(R.id.list_neighbours))
-                .perform(RecyclerViewActions.scrollTo(hasDescendant(withText(favouriteNeighbour.getName()))))
-                .check(matches(hasDescendant(withId(R.id.list_favorite_neighbours)).matches(isDisplayed())));
+        // Given
+        onView(allOf(withId(R.id.list_favorite_neighbours), isDisplayed())).check(withItemCount(FAVORIS_ITEMS_COUNT));
+        // When
+        onView(withId(R.id.name_detail_neighbour)).check(matches(hasDescendant(withText("Caroline"))));
+        onView(withId(R.id.name_detail_neighbour)).check(matches(hasDescendant(withText("Ludovic"))));
+        // Then
+    }
 
 }

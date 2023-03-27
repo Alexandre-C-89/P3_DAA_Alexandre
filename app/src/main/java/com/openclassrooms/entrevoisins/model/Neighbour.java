@@ -62,6 +62,17 @@ public class Neighbour implements Parcelable {
         this.aboutMe = aboutMe;
     }
 
+    public Neighbour(long id, String name, String avatarUrl, String address,
+                     String phoneNumber, String aboutMe, boolean isFavorite) {
+        this.id = id;
+        this.name = name;
+        this.avatarUrl = avatarUrl;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.aboutMe = aboutMe;
+        this.isFavorite = isFavorite;
+    }
+
     @Override
     public int describeContents() {
         return 0;

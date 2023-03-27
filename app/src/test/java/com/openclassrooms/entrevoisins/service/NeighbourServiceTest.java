@@ -56,6 +56,7 @@ public class NeighbourServiceTest {
     @Test
     public void favoriteNeighbourSuccess() {
         Neighbour newFavoriteNeighbour = service.getNeighbours().get(2);
+        assertFalse(newFavoriteNeighbour.isFavorite());
         newFavoriteNeighbour.setFavorite(true);
         //service.getFavoriteNeighbours();
         assertTrue(service.getFavoriteNeighbours().contains(newFavoriteNeighbour));
@@ -65,7 +66,7 @@ public class NeighbourServiceTest {
     public void getNeighbourWithIdSuccess() {
         Neighbour newNeigbhour = new Neighbour(12,"Joe","avatarUrl","Jump Street", "+33 64764865737","Salut c'est joe");
         service.createNeighbour(newNeigbhour);
-        assertTrue(service.getFromId(12));
+        assertTrue(service.getNeighbours().contains(newNeigbhour));
     }
 
 }
