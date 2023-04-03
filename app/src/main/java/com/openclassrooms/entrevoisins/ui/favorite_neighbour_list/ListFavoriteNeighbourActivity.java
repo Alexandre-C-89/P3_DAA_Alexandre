@@ -30,7 +30,7 @@ public class ListFavoriteNeighbourActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_neighbour);
+        setContentView(R.layout.activity_list_favorite_neighbour);
         ButterKnife.bind(this);
 
         setSupportActionBar(mToolbar);

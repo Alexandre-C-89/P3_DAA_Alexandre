@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/list_favorite_neighbours"
-        android:name="com.openclassrooms.entrevoisins.ui.neighbour_list.NeighbourFragment"
+        android:name="com.openclassrooms.entrevoisins.ui.favorite_neighbour_list.FavoriteNeighbourFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="16dp"
