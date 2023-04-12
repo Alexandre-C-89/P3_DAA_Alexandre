@@ -1,5 +1,10 @@
 # OpenClassrooms
 
+/*** Lancer le projet ***/
+
+- 
+
+
 Projet 3 "Développez une nouvelle fonctionnalité pour l'application Entrevoisins et testez-là" du parcours Développeur d'applications Android de OpenClassrooms. 
 
 
