@@ -2,7 +2,14 @@
 
 /*** Lancer le projet ***/
 
-- 
+- Ouvrez le fichier dans android studio
+- Laisser andrdoid studio analiser les différents dossier/packages
+- Cliquez sur le petit marteau vert en haut de votre fenêtre android studio ou utilisez le raccourcis CTRL + F9
+- Laisser le projet ce build (construire) par android studio
+- A cette étape vous devriez avoir un message qui vous indique si l'opération a été réaliser avec succès ou non
+- Si c'est un succès, vous pouvez cliquer sur la fenêtre déroulante à la droite du marteau vert et choisissez "App"
+- Une fois "App" choisi cliquez sur la flèche verte à droite de la fenêtre déroulante, cela lance la virtual machine.
+- Vous devriez avoir un téléphone apparaître et au cours de quelques instants l'application devrait ce lancer.
 
 
 Projet 3 "Développez une nouvelle fonctionnalité pour l'application Entrevoisins et testez-là" du parcours Développeur d'applications Android de OpenClassrooms. 
